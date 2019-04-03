@@ -1,3 +1,5 @@
+My fork of sorin-ionescu/prezto with customizations.
+
 Prezto — Instantly Awesome Zsh
 ==============================
 

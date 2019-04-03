@@ -11,3 +11,63 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
 fi
 
 # Customize to your needs...
+BASE16_SHELL=$HOME/.config/base16-shell/
+[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
+
+alias cfg='git --git-dir=$HOME/.cfg/ --work-tree=$HOME'
+
+vim() { nvim "$@" }
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+set -a  # auto-export all subequent env variable assignments
+source $HOME/.mupweb.config
+set +a  # turn off auto-export of env variables
+
+source $HOME/.meetup.config
+
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND='fd --type f'
+
+export PATH="$HOME/.yarn/bin:$PATH"
+export PATH="$PATH:$HOME/src/scripts"
+
+alias gitt=git-together
+
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/steveaquillano/.nvm/versions/node/v8.1.3/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/steveaquillano/.nvm/versions/node/v8.1.3/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/steveaquillano/.nvm/versions/node/v8.1.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/steveaquillano/.nvm/versions/node/v8.1.3/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# tabtab source for yarn package
+# uninstall by removing these lines or running `tabtab uninstall yarn`
+[[ -f /Users/steveaquillano/.config/yarn/global/node_modules/tabtab/.completions/yarn.zsh ]] && . /Users/steveaquillano/.config/yarn/global/node_modules/tabtab/.completions/yarn.zshkkkkkkkkkkkk
+
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
+# the following was inserted by https://github.com/meetup/meetup/bootstrap.sh
+export PATH="$HOME/.jenv/bin:$PATH
+eval "$(jenv init -)
+
+# the following was inserted by https://github.com/meetup/meetup/bootstrap.sh
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
+
+[[ -s "$HOME/.avn/bin/avn.sh" ]] && source "$HOME/.avn/bin/avn.sh" # load avn
+
+# rbenv inserted by meetup/bootstrap.sh
+# Load rbenv automatically by appending
+# the following to ~/.zshrc:
+
+eval "$(rbenv init -)"
+
+export PATH="/usr/local/opt/protobuf241/bin:$PATH"
